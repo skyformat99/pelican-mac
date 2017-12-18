@@ -87,35 +87,35 @@ _pelican(_pelican_state *_st, unsigned char out[pelican_BYTES],
     size_t         remaining;
 
 #if pelican_ROUNDS == 10
-# define COMPUTE_AES_ROUNDS(IN)                                                     \
-    do {                                                                            \
-        r = _mm_aesenc_si128(_mm_xor_si128((IN), round_keys[0]), round_keys[1]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[2]), round_keys[3]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[4]), round_keys[5]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[6]), round_keys[7]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[8]), round_keys[9]);    \
-        r = _mm_aesenclast_si128(r, round_keys[10]);                                \
+# define COMPUTE_AES_ROUNDS(IN)                                                  \
+    do {                                                                         \
+        r = _mm_aesenc_si128(_mm_xor_si128((IN), round_keys[0]), round_keys[1]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[2]), round_keys[3]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[4]), round_keys[5]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[6]), round_keys[7]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[8]), round_keys[9]); \
+        r = _mm_aesenclast_si128(r, round_keys[10]);                             \
     } while (0)
 
 #elif pelican_ROUNDS == 14
 
-# define COMPUTE_AES_ROUNDS(IN)                                                       \
-    do {                                                                              \
-        r = _mm_aesenc_si128(_mm_xor_si128((IN), round_keys[ 0]), round_keys[ 1]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[ 2]), round_keys[ 3]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[ 4]), round_keys[ 5]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[ 6]), round_keys[ 7]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[ 8]), round_keys[ 9]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[10]), round_keys[11]);    \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[12]), round_keys[13]);    \
-        r = _mm_aesenclast_si128(r, round_keys[14]);                                  \
+# define COMPUTE_AES_ROUNDS(IN)                                                    \
+    do {                                                                           \
+        r = _mm_aesenc_si128(_mm_xor_si128((IN), round_keys[ 0]), round_keys[ 1]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[ 2]), round_keys[ 3]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[ 4]), round_keys[ 5]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[ 6]), round_keys[ 7]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[ 8]), round_keys[ 9]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[10]), round_keys[11]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[12]), round_keys[13]); \
+        r = _mm_aesenclast_si128(r, round_keys[14]);                               \
     } while (0)
 #endif
 
-# define COMPUTE_PELICAN_ROUNDS(IN)                                                 \
-    do {                                                                            \
-        r = _mm_aesenc_si128(   _mm_xor_si128((IN), round_keys[0]), round_keys[1]); \
-        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[2]), round_keys[3]);    \
+# define COMPUTE_PELICAN_ROUNDS(IN)                                              \
+    do {                                                                         \
+        r = _mm_aesenc_si128(_mm_xor_si128((IN), round_keys[0]), round_keys[1]); \
+        r = _mm_aesenc_si128(_mm_aesenc_si128(r, round_keys[2]), round_keys[3]); \
     } while (0)
 
     COMPUTE_AES_ROUNDS(is);
