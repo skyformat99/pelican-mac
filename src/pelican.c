@@ -155,6 +155,7 @@ _pelican(_pelican_state *_st, unsigned char out[pelican_BYTES],
         buf += 16;
         remaining -= 16;
     }
+
     for (i = 0; i < sizeof t; i++) {
         t[i] = 0U;
     }
