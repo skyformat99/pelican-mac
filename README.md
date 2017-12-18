@@ -5,8 +5,8 @@ An implementation of the Pelican 2.0 MAC function, using AES.
 
 Requires a modern Intel or AMD CPU with AES-NI support.
 
-Bonus points if you discovered the Pelican function while reading the
-[Serious Cryptography](https://www.nostarch.com/seriouscrypto) book.
+Bonus points if you also discovered the Pelican function while reading
+the [Serious Cryptography](https://www.nostarch.com/seriouscrypto) book.
 
 API
 ===
