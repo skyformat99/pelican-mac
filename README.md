@@ -1,4 +1,4 @@
-PELICAN
+Pelican
 =======
 
 An implementation of the Pelican 2.0 MAC function, using AES.
