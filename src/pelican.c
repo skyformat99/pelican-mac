@@ -162,8 +162,7 @@ _pelican(_pelican_state *_st, unsigned char out[pelican_BYTES],
         t[i] = buf[i];
     }
     t[i] = 1U;
-    c0 = _mm_xor_si128(_mm_loadu_si128((const __m128i *) (const void *) buf), r);
-    COMPUTE_PELICAN_ROUNDS(c0);
+    r = _mm_xor_si128(_mm_loadu_si128((const __m128i *) (const void *) buf), r);
 
     COMPUTE_AES_ROUNDS(r);
     _mm_storeu_si128((__m128i *) (void *) out, r);
